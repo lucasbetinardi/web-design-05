@@ -4,6 +4,7 @@
     <meta name='viewport' content='width=device-width,intial-scale=1.0' />
     <title>{block:PostTitle}{PostTitle}: {/block:PostTitle}{Title}</title>
     <link rel='stylesheet' href='http://lucasbetinardi.com/css/screen.css' />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:100,300,400' type='text/css' />
     <link rel='alternate' type='application/rss+xml' href='{RSS}' />
   </head>
   <body>
@@ -22,25 +23,51 @@
         </div>
         <div class='metadata'>
           <ul>
+            {block:Date}
             <li>
-              <a href='{Permalink}'>Permalink to this post</a>
+              <a href='{Permalink}'>{ShortMonth}. {DayOfMonth} {Year}</a>
             </li>
+            {/block:Date}
             {block:HasTags}
-            <li>Tagged
-              <ul>
-                {block:Tags}
-                <li>
-                  <a href='{TagURL}'>{Tag}</a>
-                </li>
-                {/block:Tags}
-              </ul>
-            </li>
+              {block:Tags}
+              <li>
+                <a href='{TagURL}'>#{Tag}</a>
+              </li>
+              {/block:Tags}
             {/block:HasTags}
           </ul>
         </div>
       </div>
       {/block:Text}
       {block:Photo}
+      <div class='post-photo'>
+        {LinkOpenTag}
+        <a href='{Permalink}'>
+          <img src='{PhotoURL-HighRes}' alt='{PhotoAlt}' />
+        </a>
+        {LinkCloseTag}
+        {block:Caption}
+          {Caption}
+        {/block:Caption}
+        <div class='metadata'>
+          <ul>
+            {block:Date}
+            <li>
+              <a href='{Permalink}'>{ShortMonth}. {DayOfMonth} {Year}</a>
+            </li>
+            {/block:Date}
+            {block:HasTags}
+              {block:Tags}
+              <li>
+                <a href='{TagURL}'>#{Tag}</a>
+              </li>
+              {/block:Tags}
+            {/block:HasTags}
+          </ul>
+        </div>
+      </div>
+      {/block:Photo}
+      {/block:Posts}
     </div>
     <footer>
       <p>Get the
